@@ -15,23 +15,31 @@ dotnet ef migrations add AddEntities --project AspireBackend.Api/AspireBackend.A
 
 ### Configuration
 
-Set up an OIDC with an auth provider: [EntraID](https://www.youtube.com/watch?v=SZTsdOpEb8M). Make an API with a Client registration and fill the config values.  
+Set up OIDC with an auth provider: [EntraID](https://www.youtube.com/watch?v=SZTsdOpEb8M). Register an api and a client application and fill their config values.  
 
 Append `AspireBackend.Api/appsettings.json` with
 ```json
 "Auth": {
     "Authority": "https://login.microsoftonline.com/<tenant-id>/v2.0",
-    "Audience": "<app-id>",
+    "Audience": "<api-app-id>",
     "Issuer": "https://sts.windows.net/<tenant-id>/",
-    "ApiScopes": ["api://<app-id>/shoppinglist_api.all"]
+    "ApiScopes": ["api://<api-app-id>/shoppinglist_api.all"]
 },
 ```
 
 Append `apphost.settings.json` with
 ```json
 "Scalar": {
-    "ClientId": "<client-id>",
+    "ClientId": "<client-app-id>",
     "AuthorizationUrl": "https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/authorize",
     "TokenUrl": "https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/token"
 }
 ```
+
+### Images
+
+#### Aspire 17
+ ![Aspire](AspireBackend.Images/Aspire17.png)
+
+#### Scalar AuthorizationCodeFlow
+ ![Scalar](AspireBackend.Images/ScalarApi.png)
